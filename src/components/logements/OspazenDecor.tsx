@@ -162,40 +162,71 @@ function BambooStem({
 // ─── Steam ────────────────────────────────────────────────────────────────────
 
 function Steam({ x, y, delay = 0, index = 0 }: SteamProps) {
-  const duration = 3 + index * 0.7
-  const sway = 12 + (index % 3) * 5
-  const totalRise = 60 + (index % 4) * 15
+  const duration = 4.5 + (index % 4) * 0.8
+  const sway = 18 + (index % 3) * 8
+  const totalRise = 120 + (index % 4) * 30
 
+  // Chemin ondulé — 3 courbes pour un effet plus naturel
   const path = [
     `M ${x},${y}`,
-    `C ${x + sway},${y - totalRise * 0.3}`,
-    `  ${x - sway},${y - totalRise * 0.65}`,
-    `  ${x + sway * 0.4},${y - totalRise}`,
+    `C ${x + sway},${y - totalRise * 0.25}`,
+    `  ${x - sway * 0.8},${y - totalRise * 0.5}`,
+    `  ${x + sway * 0.3},${y - totalRise * 0.72}`,
+    `S ${x - sway * 0.5},${y - totalRise * 0.88}`,
+    `  ${x + sway * 0.15},${y - totalRise}`,
+  ].join(" ")
+
+  // Version légèrement décalée pour la couche de blur
+  const pathBlur = [
+    `M ${x + 3},${y}`,
+    `C ${x + sway * 0.9 + 3},${y - totalRise * 0.25}`,
+    `  ${x - sway * 0.7 + 3},${y - totalRise * 0.5}`,
+    `  ${x + sway * 0.2 + 3},${y - totalRise * 0.72}`,
+    `S ${x - sway * 0.4 + 3},${y - totalRise * 0.88}`,
+    `  ${x + sway * 0.1 + 3},${y - totalRise}`,
   ].join(" ")
 
   const gradientId = `steamGrad-${index}`
+  const blurId = `steamBlur-${index}`
 
   return (
     <motion.g
-      animate={{ y: [0, -30], opacity: [1, 0] }}
+      animate={{ y: [0, -20], opacity: [0, 0.9, 0.7, 0] }}
       transition={{
         duration,
         delay,
         repeat: Infinity,
-        repeatDelay: 0.4,
-        ease: "easeOut",
+        repeatDelay: 0.2,
+        ease: "easeInOut",
+        times: [0, 0.15, 0.7, 1],
       }}
     >
       <defs>
         <linearGradient id={gradientId} x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stopColor="rgba(122,92,88,0.30)" />
-          <stop offset="100%" stopColor="rgba(122,92,88,0)" />
+          <stop offset="0%"   stopColor="rgba(230,210,200,0.85)" />
+          <stop offset="40%"  stopColor="rgba(220,200,190,0.55)" />
+          <stop offset="100%" stopColor="rgba(210,190,180,0)" />
         </linearGradient>
+        <filter id={blurId} x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3.5" />
+        </filter>
       </defs>
+
+      {/* Couche blur en dessous — donne l'effet de diffusion */}
+      <path
+        d={pathBlur}
+        stroke="rgba(240,220,210,0.35)"
+        strokeWidth={10}
+        fill="none"
+        strokeLinecap="round"
+        filter={`url(#${blurId})`}
+      />
+
+      {/* Trait principal net */}
       <path
         d={path}
         stroke={`url(#${gradientId})`}
-        strokeWidth={2.5}
+        strokeWidth={3.5}
         fill="none"
         strokeLinecap="round"
       />
@@ -314,14 +345,23 @@ export default function OspazenDecor() {
           flipX
         />
 
-        {/* ── STEAM volutes — spread across bottom of section ── */}
-        <Steam x={180}  y={760} delay={0.0} index={0} />
-        <Steam x={340}  y={775} delay={0.8} index={1} />
-        <Steam x={520}  y={755} delay={1.6} index={2} />
-        <Steam x={720}  y={770} delay={0.4} index={3} />
-        <Steam x={920}  y={758} delay={1.2} index={4} />
-        <Steam x={1100} y={772} delay={0.6} index={5} />
-        <Steam x={1260} y={760} delay={1.9} index={6} />
+        {/* ── STEAM volutes — bas de section ── */}
+        <Steam x={120}  y={780} delay={0.0} index={0} />
+        <Steam x={260}  y={790} delay={1.1} index={1} />
+        <Steam x={420}  y={775} delay={0.5} index={2} />
+        <Steam x={580}  y={785} delay={1.8} index={3} />
+        <Steam x={720}  y={778} delay={0.3} index={4} />
+        <Steam x={870}  y={788} delay={1.4} index={5} />
+        <Steam x={1020} y={772} delay={0.7} index={6} />
+        <Steam x={1180} y={782} delay={2.0} index={7} />
+        <Steam x={1320} y={775} delay={1.0} index={8} />
+
+        {/* ── STEAM volutes — milieu de section (zone jacuzzi) ── */}
+        <Steam x={200}  y={520} delay={0.6} index={2} />
+        <Steam x={480}  y={510} delay={1.5} index={4} />
+        <Steam x={760}  y={525} delay={0.2} index={1} />
+        <Steam x={1040} y={515} delay={1.7} index={3} />
+        <Steam x={1240} y={522} delay={0.9} index={5} />
       </svg>
     </div>
   )
