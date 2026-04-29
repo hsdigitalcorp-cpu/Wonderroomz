@@ -37,14 +37,15 @@ function BambooLeaf({
   length?: number
   flipX?: boolean
 }) {
+  const r = (n: number) => Math.round(n * 1e6) / 1e6
   const flip = flipX ? -1 : 1
   const rad = (angle * Math.PI) / 180
-  const ex = cx + flip * Math.cos(rad) * length
-  const ey = cy - Math.sin(rad) * length
-  const midX = cx + flip * Math.cos(rad) * length * 0.55
-  const midY = cy - Math.sin(rad) * length * 0.55
-  const perpX = -Math.sin(rad) * 6
-  const perpY = Math.cos(rad) * 6
+  const ex = r(cx + flip * Math.cos(rad) * length)
+  const ey = r(cy - Math.sin(rad) * length)
+  const midX = r(cx + flip * Math.cos(rad) * length * 0.55)
+  const midY = r(cy - Math.sin(rad) * length * 0.55)
+  const perpX = r(-Math.sin(rad) * 6)
+  const perpY = r(Math.cos(rad) * 6)
 
   return (
     <g>
