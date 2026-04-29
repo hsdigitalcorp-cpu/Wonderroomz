@@ -251,52 +251,102 @@ function Bubble({ left, size, delay, duration }: typeof BUBBLES[0]) {
   )
 }
 
-// ─── Steam wisp (CSS div) ─────────────────────────────────────────────────────
+// ─── Cloud ────────────────────────────────────────────────────────────────────
 
-const WISPS = [
-  { left: "5%",  delay: 0,   duration: 6,  width: 18, height: 120 },
-  { left: "15%", delay: 1.4, duration: 8,  width: 14, height: 100 },
-  { left: "26%", delay: 0.7, duration: 7,  width: 20, height: 140 },
-  { left: "38%", delay: 2.1, duration: 9,  width: 12, height: 110 },
-  { left: "50%", delay: 0.3, duration: 6.5,width: 22, height: 130 },
-  { left: "61%", delay: 1.8, duration: 7.5,width: 16, height: 120 },
-  { left: "72%", delay: 0.9, duration: 8,  width: 14, height: 100 },
-  { left: "82%", delay: 2.6, duration: 6,  width: 20, height: 115 },
-  { left: "92%", delay: 1.1, duration: 9,  width: 15, height: 135 },
-  { left: "20%", delay: 3.2, duration: 7,  width: 18, height: 125 },
-  { left: "44%", delay: 3.8, duration: 8,  width: 13, height: 105 },
-  { left: "68%", delay: 2.9, duration: 7,  width: 19, height: 130 },
+const CLOUDS = [
+  { left: "2%",  delay: 0,   duration: 18, scale: 0.7 },
+  { left: "18%", delay: 3.5, duration: 22, scale: 1.1 },
+  { left: "35%", delay: 1.2, duration: 16, scale: 0.85},
+  { left: "50%", delay: 5.0, duration: 20, scale: 1.3 },
+  { left: "65%", delay: 2.1, duration: 17, scale: 0.9 },
+  { left: "78%", delay: 6.5, duration: 23, scale: 1.0 },
+  { left: "90%", delay: 1.8, duration: 19, scale: 0.75},
+  { left: "10%", delay: 8.0, duration: 21, scale: 1.2 },
+  { left: "44%", delay: 4.3, duration: 15, scale: 0.65},
+  { left: "72%", delay: 7.2, duration: 24, scale: 1.4 },
 ]
 
-function Wisp({ left, delay, duration, width, height }: typeof WISPS[0]) {
+function Cloud({ left, delay, duration, scale }: typeof CLOUDS[0]) {
+  const w = Math.round(120 * scale)
+  const h = Math.round(50 * scale)
+  const b1 = Math.round(38 * scale)
+  const b2 = Math.round(32 * scale)
+  const b3 = Math.round(28 * scale)
+
   return (
     <motion.div
       className="absolute"
-      style={{
-        left,
-        bottom: "3%",
-        width,
-        height,
-        borderRadius: "50% 50% 30% 30%",
-        background: "linear-gradient(to top, rgba(120,190,255,0.55) 0%, rgba(160,210,255,0.25) 50%, transparent 100%)",
-        filter: "blur(8px)",
-        transformOrigin: "bottom center",
-      }}
+      style={{ left, bottom: "2%", width: w, height: h }}
       animate={{
-        y: [0, -1200],
-        x: [0, width * 0.8, -width * 0.5, width * 0.3, 0],
-        scaleX: [1, 1.3, 0.8, 1.1, 0.5],
-        opacity: [0, 0.85, 0.7, 0.4, 0],
+        y: [0, -1400],
+        x: [0, 20 * scale, -15 * scale, 10 * scale, 0],
+        opacity: [0, 0.75, 0.65, 0.4, 0],
       }}
       transition={{
         duration,
         delay,
         repeat: Infinity,
-        repeatDelay: 0.3,
-        ease: "easeOut",
-        times: [0, 0.2, 0.5, 0.8, 1],
+        repeatDelay: delay * 0.2,
+        ease: "linear",
+        times: [0, 0.1, 0.5, 0.85, 1],
       }}
-    />
+    >
+      {/* Corps central */}
+      <div style={{
+        position: "absolute",
+        bottom: 0,
+        left: "15%",
+        width: "70%",
+        height: h,
+        borderRadius: "50px",
+        background: "rgba(160,210,255,0.45)",
+        filter: "blur(6px)",
+      }} />
+      {/* Bosse gauche */}
+      <div style={{
+        position: "absolute",
+        bottom: Math.round(h * 0.5),
+        left: "5%",
+        width: b1,
+        height: b1,
+        borderRadius: "50%",
+        background: "rgba(140,200,255,0.40)",
+        filter: "blur(5px)",
+      }} />
+      {/* Bosse centre-gauche */}
+      <div style={{
+        position: "absolute",
+        bottom: Math.round(h * 0.6),
+        left: "25%",
+        width: b2 + 10,
+        height: b2 + 10,
+        borderRadius: "50%",
+        background: "rgba(170,215,255,0.50)",
+        filter: "blur(5px)",
+      }} />
+      {/* Bosse centre-droite */}
+      <div style={{
+        position: "absolute",
+        bottom: Math.round(h * 0.55),
+        left: "48%",
+        width: b2,
+        height: b2,
+        borderRadius: "50%",
+        background: "rgba(150,205,255,0.45)",
+        filter: "blur(5px)",
+      }} />
+      {/* Bosse droite */}
+      <div style={{
+        position: "absolute",
+        bottom: Math.round(h * 0.45),
+        right: "8%",
+        width: b3,
+        height: b3,
+        borderRadius: "50%",
+        background: "rgba(130,195,255,0.38)",
+        filter: "blur(5px)",
+      }} />
+    </motion.div>
   )
 }
 
@@ -330,10 +380,10 @@ export default function OspazenDecor() {
         <MistLayer key={i} {...m} />
       ))}
 
-      {/* ── Vapeurs CSS ── */}
+      {/* ── Nuages montants ── */}
       <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
-        {WISPS.map((w, i) => (
-          <Wisp key={i} {...w} />
+        {CLOUDS.map((c, i) => (
+          <Cloud key={i} {...c} />
         ))}
       </div>
 
