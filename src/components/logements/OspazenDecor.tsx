@@ -218,7 +218,7 @@ function Bubble({ left, size, delay, duration }: typeof BUBBLES[0]) {
         boxShadow: `0 0 ${size * 3}px rgba(100,180,255,0.7), 0 0 ${size}px rgba(150,210,255,0.5)`,
       }}
       animate={{
-        y: [0, -(320 + (delay % 3) * 60)],
+        y: [0, -(1400 + (delay % 3) * 200)],
         x: [0, (delay % 2 > 1 ? 1 : -1) * 18, (delay % 2 > 1 ? -1 : 1) * 12, 0],
         opacity: [0, 0.95, 0.75, 0],
         scale:   [0.5, 1, 1.15, 0.3],
@@ -265,10 +265,12 @@ export default function OspazenDecor() {
         <MistLayer key={i} {...m} />
       ))}
 
-      {/* ── Particules montantes (Option B) ── */}
-      {BUBBLES.map((b, i) => (
-        <Bubble key={i} {...b} />
-      ))}
+      {/* ── Particules montantes (Option B) — z-20 pour passer devant le texte ── */}
+      <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+        {BUBBLES.map((b, i) => (
+          <Bubble key={i} {...b} />
+        ))}
+      </div>
     </div>
   )
 }
