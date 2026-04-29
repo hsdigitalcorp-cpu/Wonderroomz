@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "logements": "Our apartments",
+    "packs": "Stay packages",
+    "blog": "Blog",
+    "reserver": "Book now"
+  },
+  "hero": {
+    "titre": "Exceptional stays in Île-de-France",
+    "sousTitre": "4 unique apartments designed to give you an unforgettable experience",
+    "cta": "View our apartments",
+    "ctaSecondaire": "Discover our packages"
+  },
+  "logements": {
+    "titre": "Our apartments",
+    "sousTitre": "Each apartment has its own identity",
+    "parNuit": "/ night",
+    "decouvrir": "Discover",
+    "capacite": "guests",
+    "surface": "m²"
+  },
+  "packs": {
+    "titre": "Stay packages",
+    "sousTitre": "To make your stay even more memorable",
+    "romantique": "Romantic",
+    "romantique_desc": "Champagne, rose petals and ambient lighting for an unforgettable evening",
+    "anniversaire": "Anniversary",
+    "anniversaire_desc": "Festive decorations, personalized cake and surprises to celebrate in style",
+    "a_partir_de": "From",
+    "voirTous": "View all packages"
+  },
+  "pourquoi": {
+    "titre": "Why Wonderroomz?",
+    "experience": {
+      "titre": "An experience designed for you",
+      "desc": "Every detail is carefully considered so you can fully enjoy your stay"
+    },
+    "proprete": {
+      "titre": "Impeccable cleanliness",
+      "desc": "Professional cleaning between each stay, hotel-quality linen"
+    },
+    "support": {
+      "titre": "Support available 7 days a week",
+      "desc": "A question? A problem? We respond in under 2 hours"
+    },
+    "direct": {
+      "titre": "Book direct = best price",
+      "desc": "No Airbnb commission means lower prices and better service for you"
+    }
+  },
+  "avis": {
+    "titre": "What our guests say"
+  },
+  "cta": {
+    "titre": "Ready for your next getaway?",
+    "sousTitre": "Book directly and get the best guaranteed rate",
+    "bouton": "Check availability"
+  },
+  "footer": {
+    "tagline": "Exceptional stays in Île-de-France",
+    "logements": "Apartments",
+    "contact": "Contact",
+    "mentions": "Legal notice",
+    "droits": "All rights reserved"
+  },
+  "blog": {
+    "titre": "The Wonderroomz blog",
+    "sousTitre": "Stay ideas, guides and tips to make the most of Île-de-France",
+    "lire": "Read article",
+    "retour": "Back to blog"
+  },
+  "logement": {
+    "parNuit": "/ night",
+    "reserver": "Book this apartment",
+    "amenities": "Amenities",
+    "disponibilites": "Availability",
+    "capacite": "Capacity",
+    "surface": "Size",
+    "chambres": "Bedroom(s)",
+    "personnes": "guests"
+  }
+}

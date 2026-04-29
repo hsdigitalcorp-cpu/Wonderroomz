@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "logements": "I nostri appartamenti",
+    "packs": "Pacchetti soggiorno",
+    "blog": "Blog",
+    "reserver": "Prenota"
+  },
+  "hero": {
+    "titre": "Soggiorni eccezionali in Île-de-France",
+    "sousTitre": "4 appartamenti unici pensati per regalarti un'esperienza indimenticabile",
+    "cta": "Scopri i nostri appartamenti",
+    "ctaSecondaire": "Scopri i nostri pacchetti"
+  },
+  "logements": {
+    "titre": "I nostri appartamenti",
+    "sousTitre": "Ogni appartamento ha la sua identità",
+    "parNuit": "/ notte",
+    "decouvrir": "Scopri",
+    "capacite": "persone",
+    "surface": "m²"
+  },
+  "packs": {
+    "titre": "Pacchetti soggiorno",
+    "sousTitre": "Per rendere il tuo soggiorno ancora più memorabile",
+    "romantique": "Romantico",
+    "romantique_desc": "Champagne, petali di rosa e luci soffuse per una serata indimenticabile",
+    "anniversaire": "Anniversario",
+    "anniversaire_desc": "Decorazioni festive, torta personalizzata e sorprese per festeggiare nel modo giusto",
+    "a_partir_de": "A partire da",
+    "voirTous": "Vedi tutti i pacchetti"
+  },
+  "pourquoi": {
+    "titre": "Perché Wonderroomz?",
+    "experience": {
+      "titre": "Un'esperienza pensata per te",
+      "desc": "Ogni dettaglio è curato perché tu possa goderti appieno il tuo soggiorno"
+    },
+    "proprete": {
+      "titre": "Pulizia impeccabile",
+      "desc": "Pulizia professionale tra ogni soggiorno, biancheria di qualità alberghiera"
+    },
+    "support": {
+      "titre": "Supporto disponibile 7 giorni su 7",
+      "desc": "Una domanda? Un problema? Rispondiamo in meno di 2 ore"
+    },
+    "direct": {
+      "titre": "Prenotazione diretta = prezzo migliore",
+      "desc": "Senza commissioni Airbnb, paghi meno e possiamo accoglierti meglio"
+    }
+  },
+  "avis": {
+    "titre": "Cosa dicono i nostri viaggiatori"
+  },
+  "cta": {
+    "titre": "Pronto per la tua prossima fuga?",
+    "sousTitre": "Prenota direttamente e ottieni la tariffa migliore garantita",
+    "bouton": "Verifica disponibilità"
+  },
+  "footer": {
+    "tagline": "Soggiorni eccezionali in Île-de-France",
+    "logements": "Appartamenti",
+    "contact": "Contatti",
+    "mentions": "Note legali",
+    "droits": "Tutti i diritti riservati"
+  },
+  "blog": {
+    "titre": "Il blog di Wonderroomz",
+    "sousTitre": "Idee di soggiorno, guide e consigli per godersi l'Île-de-France",
+    "lire": "Leggi l'articolo",
+    "retour": "Torna al blog"
+  },
+  "logement": {
+    "parNuit": "/ notte",
+    "reserver": "Prenota questo appartamento",
+    "amenities": "Servizi",
+    "disponibilites": "Disponibilità",
+    "capacite": "Capacità",
+    "surface": "Superficie",
+    "chambres": "Camera(e)",
+    "personnes": "persone"
+  }
+}

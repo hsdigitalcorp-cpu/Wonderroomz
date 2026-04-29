@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "logements": "Nos logements",
+    "packs": "Packs séjour",
+    "blog": "Blog",
+    "reserver": "Réserver"
+  },
+  "hero": {
+    "titre": "Des séjours d'exception en Île-de-France",
+    "sousTitre": "4 appartements uniques pensés pour vous faire vivre une expérience inoubliable",
+    "cta": "Voir nos logements",
+    "ctaSecondaire": "Découvrir nos packs"
+  },
+  "logements": {
+    "titre": "Nos logements",
+    "sousTitre": "Chaque appartement a sa propre identité",
+    "parNuit": "/ nuit",
+    "decouvrir": "Découvrir",
+    "capacite": "personnes",
+    "surface": "m²"
+  },
+  "packs": {
+    "titre": "Packs séjour",
+    "sousTitre": "Pour rendre votre séjour encore plus mémorable",
+    "romantique": "Romantique",
+    "romantique_desc": "Champagne, pétales de roses et ambiance lumineuse pour une soirée inoubliable",
+    "anniversaire": "Anniversaire",
+    "anniversaire_desc": "Décorations festives, gâteau personnalisé et surprises pour célébrer comme il se doit",
+    "a_partir_de": "À partir de",
+    "voirTous": "Voir tous les packs"
+  },
+  "pourquoi": {
+    "titre": "Pourquoi Wonderroomz ?",
+    "experience": {
+      "titre": "Une expérience pensée pour vous",
+      "desc": "Chaque détail est soigné pour que vous profitiez pleinement de votre séjour"
+    },
+    "proprete": {
+      "titre": "Propreté irréprochable",
+      "desc": "Ménage professionnel entre chaque séjour, linge de maison hôtelier"
+    },
+    "support": {
+      "titre": "Support disponible 7j/7",
+      "desc": "Une question ? Un souci ? Nous répondons en moins de 2h"
+    },
+    "direct": {
+      "titre": "Réservation directe = meilleur prix",
+      "desc": "Sans commission Airbnb, vous payez moins et nous pouvons mieux vous accueillir"
+    }
+  },
+  "avis": {
+    "titre": "Ce que disent nos voyageurs"
+  },
+  "cta": {
+    "titre": "Prêt pour votre prochaine escapade ?",
+    "sousTitre": "Réservez directement et bénéficiez du meilleur tarif garanti",
+    "bouton": "Voir les disponibilités"
+  },
+  "footer": {
+    "tagline": "Des séjours d'exception en Île-de-France",
+    "logements": "Logements",
+    "contact": "Contact",
+    "mentions": "Mentions légales",
+    "droits": "Tous droits réservés"
+  },
+  "blog": {
+    "titre": "Le blog Wonderroomz",
+    "sousTitre": "Idées de séjours, guides et conseils pour profiter de l'Île-de-France",
+    "lire": "Lire l'article",
+    "retour": "Retour au blog"
+  },
+  "logement": {
+    "parNuit": "/ nuit",
+    "reserver": "Réserver ce logement",
+    "amenities": "Équipements",
+    "disponibilites": "Disponibilités",
+    "capacite": "Capacité",
+    "surface": "Surface",
+    "chambres": "Chambre(s)",
+    "personnes": "personnes"
+  }
+}
