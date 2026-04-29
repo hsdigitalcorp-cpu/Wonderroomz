@@ -203,6 +203,22 @@ const BUBBLES = [
   { left: "46%", size: 6,  delay: 2.9,  duration: 7.5 },
   { left: "70%", size: 5,  delay: 3.6,  duration: 7   },
   { left: "87%", size: 7,  delay: 2.7,  duration: 5.5 },
+  { left: "3%",  size: 4,  delay: 4.2,  duration: 8   },
+  { left: "18%", size: 9,  delay: 4.8,  duration: 6   },
+  { left: "27%", size: 4,  delay: 3.9,  duration: 9   },
+  { left: "36%", size: 7,  delay: 5.1,  duration: 7   },
+  { left: "53%", size: 4,  delay: 4.5,  duration: 8.5 },
+  { left: "62%", size: 6,  delay: 3.8,  duration: 6   },
+  { left: "78%", size: 4,  delay: 5.3,  duration: 7   },
+  { left: "93%", size: 8,  delay: 4.0,  duration: 6.5 },
+  { left: "9%",  size: 6,  delay: 5.8,  duration: 7   },
+  { left: "43%", size: 5,  delay: 6.0,  duration: 8   },
+  { left: "67%", size: 7,  delay: 5.5,  duration: 6   },
+  { left: "84%", size: 4,  delay: 6.3,  duration: 9   },
+  { left: "20%", size: 10, delay: 6.8,  duration: 5.5 },
+  { left: "55%", size: 4,  delay: 7.0,  duration: 8   },
+  { left: "75%", size: 6,  delay: 6.5,  duration: 7   },
+  { left: "95%", size: 5,  delay: 7.2,  duration: 6   },
 ]
 
 function Bubble({ left, size, delay, duration }: typeof BUBBLES[0]) {
