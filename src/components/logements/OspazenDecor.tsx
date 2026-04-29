@@ -155,12 +155,15 @@ function BambooStem({
 
 // ─── Mist layer (Option A) ────────────────────────────────────────────────────
 
+// ─── Mist layer (Option A) ────────────────────────────────────────────────────
+
 const MIST_LAYERS = [
-  { left: "0%",   width: "55%", height: 90,  bottom: 0,   delay: 0,    duration: 8 },
-  { left: "30%",  width: "60%", height: 110, bottom: 0,   delay: 1.5,  duration: 10 },
-  { left: "60%",  width: "55%", height: 80,  bottom: 0,   delay: 0.8,  duration: 9 },
-  { left: "10%",  width: "45%", height: 60,  bottom: 30,  delay: 2.2,  duration: 11 },
-  { left: "50%",  width: "50%", height: 70,  bottom: 20,  delay: 0.4,  duration: 7  },
+  { left: "-5%",  width: "50%", height: 140, bottom: -20, delay: 0,   duration: 9  },
+  { left: "25%",  width: "55%", height: 160, bottom: -30, delay: 1.8, duration: 11 },
+  { left: "55%",  width: "50%", height: 130, bottom: -10, delay: 0.9, duration: 8  },
+  { left: "5%",   width: "42%", height: 100, bottom: 60,  delay: 2.5, duration: 12 },
+  { left: "48%",  width: "48%", height: 110, bottom: 50,  delay: 0.5, duration: 10 },
+  { left: "75%",  width: "35%", height: 90,  bottom: 70,  delay: 3.0, duration: 9  },
 ]
 
 function MistLayer({ left, width, height, bottom, delay, duration }: typeof MIST_LAYERS[0]) {
@@ -173,10 +176,10 @@ function MistLayer({ left, width, height, bottom, delay, duration }: typeof MIST
         width,
         height,
         borderRadius: "50%",
-        background: "radial-gradient(ellipse at center bottom, rgba(220,205,195,0.22) 0%, rgba(200,185,175,0.08) 55%, transparent 100%)",
-        filter: "blur(28px)",
+        background: "radial-gradient(ellipse at center, rgba(122,92,88,0.18) 0%, rgba(100,70,66,0.10) 50%, transparent 100%)",
+        filter: "blur(40px)",
       }}
-      animate={{ opacity: [0.4, 0.85, 0.4], scaleX: [1, 1.06, 1], y: [0, -8, 0] }}
+      animate={{ opacity: [0.6, 1, 0.6], scaleX: [1, 1.08, 1], y: [0, -12, 0] }}
       transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
     />
   )
@@ -185,21 +188,21 @@ function MistLayer({ left, width, height, bottom, delay, duration }: typeof MIST
 // ─── Bubble particle (Option B) ───────────────────────────────────────────────
 
 const BUBBLES = [
-  { left: "8%",  size: 5, delay: 0,    duration: 6,  startY: "88%" },
-  { left: "16%", size: 3, delay: 1.2,  duration: 7,  startY: "90%" },
-  { left: "24%", size: 6, delay: 0.5,  duration: 5.5,startY: "85%" },
-  { left: "33%", size: 4, delay: 2.1,  duration: 8,  startY: "92%" },
-  { left: "41%", size: 3, delay: 0.9,  duration: 6.5,startY: "87%" },
-  { left: "50%", size: 5, delay: 1.7,  duration: 7,  startY: "89%" },
-  { left: "58%", size: 4, delay: 0.3,  duration: 6,  startY: "91%" },
-  { left: "66%", size: 6, delay: 2.4,  duration: 5,  startY: "86%" },
-  { left: "74%", size: 3, delay: 1.0,  duration: 7.5,startY: "90%" },
-  { left: "82%", size: 5, delay: 0.7,  duration: 6,  startY: "88%" },
-  { left: "90%", size: 4, delay: 1.9,  duration: 8,  startY: "92%" },
-  { left: "12%", size: 3, delay: 3.0,  duration: 5.5,startY: "93%" },
-  { left: "47%", size: 4, delay: 2.8,  duration: 7,  startY: "87%" },
-  { left: "71%", size: 3, delay: 3.5,  duration: 6.5,startY: "91%" },
-  { left: "88%", size: 5, delay: 2.6,  duration: 5,  startY: "89%" },
+  { left: "6%",  size: 7,  delay: 0,    duration: 7   },
+  { left: "14%", size: 5,  delay: 1.3,  duration: 8   },
+  { left: "22%", size: 8,  delay: 0.6,  duration: 6   },
+  { left: "31%", size: 5,  delay: 2.2,  duration: 9   },
+  { left: "40%", size: 6,  delay: 1.0,  duration: 7   },
+  { left: "49%", size: 8,  delay: 1.8,  duration: 8   },
+  { left: "57%", size: 5,  delay: 0.4,  duration: 6.5 },
+  { left: "65%", size: 9,  delay: 2.5,  duration: 5.5 },
+  { left: "73%", size: 5,  delay: 1.1,  duration: 8   },
+  { left: "81%", size: 7,  delay: 0.8,  duration: 7   },
+  { left: "89%", size: 6,  delay: 2.0,  duration: 9   },
+  { left: "11%", size: 5,  delay: 3.1,  duration: 6   },
+  { left: "46%", size: 6,  delay: 2.9,  duration: 7.5 },
+  { left: "70%", size: 5,  delay: 3.6,  duration: 7   },
+  { left: "87%", size: 7,  delay: 2.7,  duration: 5.5 },
 ]
 
 function Bubble({ left, size, delay, duration }: typeof BUBBLES[0]) {
@@ -208,25 +211,25 @@ function Bubble({ left, size, delay, duration }: typeof BUBBLES[0]) {
       className="absolute rounded-full"
       style={{
         left,
-        bottom: 0,
+        bottom: "5%",
         width: size,
         height: size,
-        background: `radial-gradient(circle at 35% 35%, rgba(255,245,240,0.9), rgba(220,200,190,0.4))`,
-        boxShadow: `0 0 ${size * 2}px rgba(220,200,190,0.5)`,
+        background: `radial-gradient(circle at 35% 35%, rgba(200,170,160,0.95), rgba(150,110,100,0.5))`,
+        boxShadow: `0 0 ${size * 3}px rgba(170,130,120,0.6), 0 0 ${size}px rgba(200,160,150,0.4)`,
       }}
       animate={{
-        y: [0, -(280 + Math.sin(delay) * 80)],
-        x: [0, Math.cos(delay * 2) * 20, Math.sin(delay) * -15, 0],
-        opacity: [0, 0.8, 0.6, 0],
-        scale: [0.6, 1, 1.1, 0.4],
+        y: [0, -(320 + (delay % 3) * 60)],
+        x: [0, (delay % 2 > 1 ? 1 : -1) * 18, (delay % 2 > 1 ? -1 : 1) * 12, 0],
+        opacity: [0, 0.95, 0.75, 0],
+        scale:   [0.5, 1, 1.15, 0.3],
       }}
       transition={{
         duration,
         delay,
         repeat: Infinity,
-        repeatDelay: delay * 0.3,
+        repeatDelay: 0.5 + (delay % 2),
         ease: "easeOut",
-        times: [0, 0.2, 0.75, 1],
+        times: [0, 0.15, 0.75, 1],
       }}
     />
   )
