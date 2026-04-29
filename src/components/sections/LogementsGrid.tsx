@@ -76,14 +76,15 @@ function CardCarousel({ images, accent }: { images: string[]; accent: string }) 
 // Ordre d'affichage aligné sur le hero
 const ORDER = ["ospazen", "penthouse", "jungle", "cabanette"]
 
-export default function LogementsGrid() {
+export default function LogementsGrid({ hideHeader = false }: { hideHeader?: boolean }) {
   const sorted = ORDER.map((id) => logements.find((l) => l.id === id)).filter(Boolean) as typeof logements
 
   return (
-    <section id="logements" className="py-24" style={{ backgroundColor: "#FAF8F5" }}>
+    <section id="logements" className={hideHeader ? "pb-24" : "py-24"} style={{ backgroundColor: "#FAF8F5" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
+        {!hideHeader && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,12 +102,13 @@ export default function LogementsGrid() {
             className="text-4xl sm:text-5xl font-bold mb-4"
             style={{ fontFamily: "var(--font-playfair)", color: "#1C1C1C" }}
           >
-            Choisissez l'émotion<br className="hidden sm:block" /> que vous voulez vivre.
+            Choisissez l&apos;émotion<br className="hidden sm:block" /> que vous voulez vivre.
           </h2>
           <p className="text-base sm:text-lg max-w-xl mx-auto" style={{ color: "rgba(28,28,28,0.55)" }}>
             Chaque logement a son univers. Aucun ne ressemble aux autres.
           </p>
         </motion.div>
+        )}
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import LogementsGrid from "@/components/sections/LogementsGrid"
-import Link from "next/link"
 import { logements } from "@/data/logements"
 
 export const metadata: Metadata = {
@@ -37,37 +36,6 @@ const ARGUMENTS = [
   },
 ]
 
-const CHOIX = [
-  {
-    slug: "o-spa-zen",
-    nom: "O SPA ZEN",
-    accent: "#7A5C58",
-    pour: "Les couples en quête de bien-être total",
-    pitch: "Jacuzzi + sauna + terrasse pergola. Le logement le plus complet pour décompresser vraiment. Note 4.93 · Coup de cœur Voyageurs.",
-  },
-  {
-    slug: "penthouse",
-    nom: "Penthouse",
-    accent: "#4A4E69",
-    pour: "Les amateurs d'élégance et de volumes",
-    pitch: "Moulures, hauteur sous plafond, jacuzzi privatif. Ambiance hôtel particulier dans un écrin art déco.",
-  },
-  {
-    slug: "jungle",
-    nom: "Jungle Fever",
-    accent: "#3D5A3E",
-    pour: "Les cinéphiles et les amoureux de l'insolite",
-    pitch: "Cinéma privatif avec sièges massants, mezzanine tropicale. L'expérience la plus originale de la gamme. Coup de cœur Voyageurs.",
-  },
-  {
-    slug: "cabanette",
-    nom: "La Cabanette",
-    accent: "#5C6B3A",
-    pour: "Les couples en quête de cocooning nature",
-    pitch: "Jacuzzi, sauna, mezzanine cosy et ambiance chalet raffiné. Parfaite en toutes saisons, magique en hiver.",
-  },
-]
-
 const FAQ_ITEMS = [
   {
     q: "Peut-on réserver sans passer par Airbnb ?",
@@ -93,57 +61,61 @@ const FAQ_ITEMS = [
 
 export default function LogementsPage() {
   const totalAvis = logements.reduce((sum, l) => sum + (l.avis ?? 0), 0)
-  const noteMovenne = (logements.reduce((sum, l) => sum + (l.note ?? 0), 0) / logements.length).toFixed(2)
+  const noteMoyenne = (logements.reduce((sum, l) => sum + (l.note ?? 0), 0) / logements.length).toFixed(2)
 
   return (
     <main>
-      {/* ── Header dark ── */}
-      <section className="pt-32 pb-16" style={{ backgroundColor: "#13151A" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p
-            className="text-xs font-mono tracking-[0.45em] uppercase mb-5"
-            style={{ color: "#B8997A" }}
-          >
-            Île-de-France · Réservation directe
-          </p>
-          <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl mb-6"
-            style={{ fontFamily: "var(--font-playfair)", color: "#F2EDE4" }}
-          >
-            4 suites privatives
-            <br />
-            <span style={{ color: "#B8997A" }}>à deux pas de Paris.</span>
-          </h1>
-          <p className="text-base sm:text-lg max-w-2xl mb-10" style={{ color: "rgba(242,237,228,0.5)" }}>
-            Jacuzzi privatif, sauna finlandais, cinéma privatif — des expériences pensées pour les couples
-            qui veulent vivre quelque chose d&apos;unique en Île-de-France.
-          </p>
-
-          {/* Social proof agrégé */}
-          <div className="flex flex-wrap items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map((s) => (
-                  <svg key={s} className="w-4 h-4" viewBox="0 0 12 12" fill="#F5C842">
-                    <path d="M6 0.5l1.545 3.13 3.455.502-2.5 2.436.59 3.432L6 8.375l-3.09 1.625.59-3.432L1 4.132l3.455-.502z"/>
-                  </svg>
-                ))}
-              </div>
-              <span className="text-sm font-semibold" style={{ color: "#F2EDE4" }}>{noteMovenne} / 5</span>
-              <span className="text-sm" style={{ color: "rgba(242,237,228,0.4)" }}>· {totalAvis}+ avis vérifiés</span>
+      {/* ── Section 1+2 fusionnées : intro SEO + grid ── */}
+      <section style={{ backgroundColor: "#FAF8F5" }}>
+        {/* Intro */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div>
+              <p
+                className="text-xs font-mono tracking-[0.45em] uppercase mb-5"
+                style={{ color: "#B8997A" }}
+              >
+                Île-de-France · Réservation directe
+              </p>
+              <h1
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-2xl"
+                style={{ fontFamily: "var(--font-playfair)", color: "#1C1C1C" }}
+              >
+                4 suites privatives
+                <br />
+                <span style={{ color: "#B8997A" }}>à deux pas de Paris.</span>
+              </h1>
             </div>
-            <div
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
-              style={{ backgroundColor: "rgba(245,200,66,0.1)", color: "#F5C842", border: "1px solid rgba(245,200,66,0.2)" }}
-            >
-              🏆 2 logements Coup de cœur Voyageurs
+            <div className="flex flex-col gap-4 lg:text-right lg:items-end">
+              {/* Social proof agrégé */}
+              <div className="flex items-center gap-2">
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map((s) => (
+                    <svg key={s} className="w-4 h-4" viewBox="0 0 12 12" fill="#F5C842">
+                      <path d="M6 0.5l1.545 3.13 3.455.502-2.5 2.436.59 3.432L6 8.375l-3.09 1.625.59-3.432L1 4.132l3.455-.502z"/>
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm font-semibold" style={{ color: "#1C1C1C" }}>{noteMoyenne} / 5</span>
+                <span className="text-sm" style={{ color: "rgba(28,28,28,0.4)" }}>· {totalAvis}+ avis vérifiés</span>
+              </div>
+              <div
+                className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
+                style={{ backgroundColor: "rgba(245,200,66,0.1)", color: "#B8880A", border: "1px solid rgba(245,200,66,0.3)" }}
+              >
+                🏆 2 logements Coup de cœur Voyageurs
+              </div>
+              <p className="text-sm max-w-xs" style={{ color: "rgba(28,28,28,0.5)" }}>
+                Jacuzzi privatif, sauna, cinéma privatif —
+                des expériences uniques réservées exclusivement pour vous.
+              </p>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ── Grid des logements ── */}
-      <LogementsGrid />
+        {/* Grid — sans son propre header */}
+        <LogementsGrid hideHeader />
+      </section>
 
       {/* ── Pourquoi réserver en direct ── */}
       <section className="py-20" style={{ backgroundColor: "#13151A" }}>
@@ -176,61 +148,6 @@ export default function LogementsPage() {
         </div>
       </section>
 
-      {/* ── Guide de choix ── */}
-      <section className="py-20" style={{ backgroundColor: "#FAF8F5" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl mb-12">
-            <p className="text-xs font-mono tracking-[0.45em] uppercase mb-4" style={{ color: "#B8997A" }}>
-              Quel logement choisir
-            </p>
-            <h2
-              className="text-3xl sm:text-4xl font-bold leading-snug"
-              style={{ fontFamily: "var(--font-playfair)", color: "#1C1C1C" }}
-            >
-              Trouvez le logement
-              <br />fait pour vous.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {CHOIX.map((item) => (
-              <Link key={item.slug} href={`/logements/${item.slug}`} className="group block">
-                <div
-                  className="p-6 rounded-2xl h-full transition-shadow duration-300"
-                  style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(28,28,28,0.06)" }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div
-                      className="w-1 self-stretch rounded-full flex-shrink-0"
-                      style={{ backgroundColor: item.accent }}
-                    />
-                    <div>
-                      <p className="text-xs font-mono tracking-widest uppercase mb-1" style={{ color: item.accent }}>
-                        {item.pour}
-                      </p>
-                      <h3
-                        className="text-xl font-bold mb-2"
-                        style={{ fontFamily: "var(--font-playfair)", color: "#1C1C1C" }}
-                      >
-                        {item.nom}
-                      </h3>
-                      <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(28,28,28,0.6)" }}>
-                        {item.pitch}
-                      </p>
-                      <span
-                        className="text-xs font-semibold transition-opacity group-hover:opacity-70"
-                        style={{ color: item.accent }}
-                      >
-                        Découvrir ce logement →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── FAQ ── */}
       <section className="py-20" style={{ backgroundColor: "#FAF8F5" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -245,7 +162,7 @@ export default function LogementsPage() {
               Tout ce qu&apos;il faut savoir.
             </h2>
           </div>
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col">
             {FAQ_ITEMS.map((item, i) => (
               <div
                 key={i}
