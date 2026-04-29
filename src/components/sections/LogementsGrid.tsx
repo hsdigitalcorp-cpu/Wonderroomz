@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 import { logements } from "@/data/logements"
 
@@ -22,16 +22,28 @@ const CARD_META: Record<string, {
 
 function CardCarousel({ images, accent }: { images: string[]; accent: string }) {
   const [current, setCurrent] = useState(0)
+  const [hovered, setHovered] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const next = useCallback(() => {
-    setCurrent((c) => (c + 1) % images.length)
+  const goTo = useCallback((index: number) => {
+    setCurrent((index + images.length) % images.length)
   }, [images.length])
 
-  useEffect(() => {
+  const startTimer = useCallback(() => {
     if (images.length <= 1) return
-    const timer = setInterval(next, 3000)
-    return () => clearInterval(timer)
-  }, [next, images.length])
+    timerRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % images.length)
+    }, 3000)
+  }, [images.length])
+
+  const stopTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+  }, [])
+
+  useEffect(() => {
+    startTimer()
+    return () => stopTimer()
+  }, [startTimer, stopTimer])
 
   if (images.length === 0) {
     return (
@@ -40,7 +52,11 @@ function CardCarousel({ images, accent }: { images: string[]; accent: string }) 
   }
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div
+      className="relative w-full h-full overflow-hidden"
+      onMouseEnter={() => { setHovered(true); stopTimer() }}
+      onMouseLeave={() => { setHovered(false); startTimer() }}
+    >
       <AnimatePresence mode="sync">
         <motion.img
           key={current}
@@ -53,6 +69,41 @@ function CardCarousel({ images, accent }: { images: string[]; accent: string }) 
           transition={{ duration: 0.8, ease: "easeInOut" }}
         />
       </AnimatePresence>
+
+      {/* Flèches */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); goTo(current - 1) }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200"
+            style={{
+              backgroundColor: "rgba(13,15,20,0.6)",
+              backdropFilter: "blur(6px)",
+              border: "1px solid rgba(242,237,228,0.12)",
+              opacity: hovered ? 1 : 0,
+              transform: `translateY(-50%) scale(${hovered ? 1 : 0.85})`,
+            }}
+            aria-label="Photo précédente"
+          >
+            <ChevronLeft className="w-3.5 h-3.5" style={{ color: "#F2EDE4" }} />
+          </button>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); goTo(current + 1) }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200"
+            style={{
+              backgroundColor: "rgba(13,15,20,0.6)",
+              backdropFilter: "blur(6px)",
+              border: "1px solid rgba(242,237,228,0.12)",
+              opacity: hovered ? 1 : 0,
+              transform: `translateY(-50%) scale(${hovered ? 1 : 0.85})`,
+            }}
+            aria-label="Photo suivante"
+          >
+            <ChevronRight className="w-3.5 h-3.5" style={{ color: "#F2EDE4" }} />
+          </button>
+        </>
+      )}
+
       {/* Indicateurs */}
       {images.length > 1 && (
         <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1 z-10">
