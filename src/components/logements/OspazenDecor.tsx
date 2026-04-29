@@ -176,7 +176,7 @@ function MistLayer({ left, width, height, bottom, delay, duration }: typeof MIST
         width,
         height,
         borderRadius: "50%",
-        background: "radial-gradient(ellipse at center, rgba(122,92,88,0.18) 0%, rgba(100,70,66,0.10) 50%, transparent 100%)",
+        background: "radial-gradient(ellipse at center, rgba(100,160,210,0.25) 0%, rgba(70,130,190,0.12) 50%, transparent 100%)",
         filter: "blur(40px)",
       }}
       animate={{ opacity: [0.6, 1, 0.6], scaleX: [1, 1.08, 1], y: [0, -12, 0] }}
@@ -214,8 +214,8 @@ function Bubble({ left, size, delay, duration }: typeof BUBBLES[0]) {
         bottom: "5%",
         width: size,
         height: size,
-        background: `radial-gradient(circle at 35% 35%, rgba(200,170,160,0.95), rgba(150,110,100,0.5))`,
-        boxShadow: `0 0 ${size * 3}px rgba(170,130,120,0.6), 0 0 ${size}px rgba(200,160,150,0.4)`,
+        background: `radial-gradient(circle at 35% 35%, rgba(180,220,255,0.95), rgba(80,160,230,0.6))`,
+        boxShadow: `0 0 ${size * 3}px rgba(100,180,255,0.7), 0 0 ${size}px rgba(150,210,255,0.5)`,
       }}
       animate={{
         y: [0, -(320 + (delay % 3) * 60)],
