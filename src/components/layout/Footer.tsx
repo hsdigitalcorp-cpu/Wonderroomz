@@ -140,9 +140,12 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col gap-2.5">
               {[
-                { href: "/packs",            label: "Packs séjour" },
-                { href: "/blog",             label: "Blog" },
-                { href: "/mentions-legales", label: "Mentions légales" },
+                { href: "/packs",             label: "Packs séjour" },
+                { href: "/blog",              label: "Blog" },
+                { href: "/contact",           label: "Contact" },
+                { href: "/mentions-legales",  label: "Mentions légales" },
+                { href: "/cgv",               label: "CGV" },
+                { href: "/confidentialite",   label: "Confidentialité" },
               ].map(({ href, label }) => (
                 <li key={href}>
                   <Link
@@ -165,10 +168,6 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(242,237,228,0.06)", color: "rgba(242,237,228,0.2)" }}
         >
           <p>© {year} Wonderroomz — Tous droits réservés</p>
-          <p>
-            Site réalisé par{" "}
-            <span style={{ color: "#B8997A" }}>HS Digital</span>
-          </p>
         </div>
 
       </div>

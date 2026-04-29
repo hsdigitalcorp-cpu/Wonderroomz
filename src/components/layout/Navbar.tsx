@@ -43,6 +43,7 @@ export default function Navbar() {
     { href: "/logements", label: t("logements") },
     { href: "/packs", label: t("packs") },
     { href: "/blog", label: t("blog") },
+    { href: "/contact", label: t("contact") },
   ]
 
   function switchLocale(next: string) {
