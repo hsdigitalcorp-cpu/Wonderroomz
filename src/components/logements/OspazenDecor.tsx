@@ -251,6 +251,55 @@ function Bubble({ left, size, delay, duration }: typeof BUBBLES[0]) {
   )
 }
 
+// ─── Steam wisp (CSS div) ─────────────────────────────────────────────────────
+
+const WISPS = [
+  { left: "5%",  delay: 0,   duration: 6,  width: 18, height: 120 },
+  { left: "15%", delay: 1.4, duration: 8,  width: 14, height: 100 },
+  { left: "26%", delay: 0.7, duration: 7,  width: 20, height: 140 },
+  { left: "38%", delay: 2.1, duration: 9,  width: 12, height: 110 },
+  { left: "50%", delay: 0.3, duration: 6.5,width: 22, height: 130 },
+  { left: "61%", delay: 1.8, duration: 7.5,width: 16, height: 120 },
+  { left: "72%", delay: 0.9, duration: 8,  width: 14, height: 100 },
+  { left: "82%", delay: 2.6, duration: 6,  width: 20, height: 115 },
+  { left: "92%", delay: 1.1, duration: 9,  width: 15, height: 135 },
+  { left: "20%", delay: 3.2, duration: 7,  width: 18, height: 125 },
+  { left: "44%", delay: 3.8, duration: 8,  width: 13, height: 105 },
+  { left: "68%", delay: 2.9, duration: 7,  width: 19, height: 130 },
+]
+
+function Wisp({ left, delay, duration, width, height }: typeof WISPS[0]) {
+  return (
+    <motion.div
+      className="absolute"
+      style={{
+        left,
+        bottom: "3%",
+        width,
+        height,
+        borderRadius: "50% 50% 30% 30%",
+        background: "linear-gradient(to top, rgba(120,190,255,0.55) 0%, rgba(160,210,255,0.25) 50%, transparent 100%)",
+        filter: "blur(8px)",
+        transformOrigin: "bottom center",
+      }}
+      animate={{
+        y: [0, -1200],
+        x: [0, width * 0.8, -width * 0.5, width * 0.3, 0],
+        scaleX: [1, 1.3, 0.8, 1.1, 0.5],
+        opacity: [0, 0.85, 0.7, 0.4, 0],
+      }}
+      transition={{
+        duration,
+        delay,
+        repeat: Infinity,
+        repeatDelay: 0.3,
+        ease: "easeOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+      }}
+    />
+  )
+}
+
 // ─── OspazenDecor ─────────────────────────────────────────────────────────────
 
 export default function OspazenDecor() {
@@ -280,6 +329,13 @@ export default function OspazenDecor() {
       {MIST_LAYERS.map((m, i) => (
         <MistLayer key={i} {...m} />
       ))}
+
+      {/* ── Vapeurs CSS ── */}
+      <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+        {WISPS.map((w, i) => (
+          <Wisp key={i} {...w} />
+        ))}
+      </div>
 
       {/* ── Particules montantes (Option B) — z-20 pour passer devant le texte ── */}
       <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
