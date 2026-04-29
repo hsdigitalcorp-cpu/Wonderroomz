@@ -1,0 +1,101 @@
+export const meta = {
+  slug: "guide-spa-bien-etre",
+  title: "Guide spa & bien-être : s'offrir une vraie pause en IDF",
+  excerpt: "Sauna, jacuzzi privatif, massage en duo... Tout ce qu'il faut savoir pour choisir le bon séjour bien-être sans quitter la région.",
+  category: "Guide spa & bien-être",
+  date: "2026-04-29",
+  readTime: "5 min",
+  cover: "/images/ospazen/2.jpg",
+}
+
+Le bien-être ne devrait pas être réservé aux grandes vacances. En Île-de-France, il est possible de vivre une vraie expérience spa — sauna, jacuzzi privatif, silence complet — à quelques kilomètres de Paris. Voici comment choisir et profiter au maximum.
+
+## Jacuzzi privatif vs spa collectif : le match
+
+### Le spa collectif (hôtel, centre)
+- Ambiance plus impersonnelle
+- Horaires imposés
+- Présence d'autres clients
+- Tarif souvent élevé (60–150 €/personne pour 2h)
+
+### Le jacuzzi privatif en logement
+- Disponible 24h/24 pendant tout votre séjour
+- Intimité totale
+- Combiné avec votre espace de vie
+- Rapport qualité-prix imbattable sur une nuit entière
+
+Pour un couple qui cherche à vraiment décompresser, le logement avec jacuzzi privatif l'emporte à presque tous les niveaux.
+
+## Le sauna : un atout souvent sous-estimé
+
+Le sauna a des effets bien documentés sur le système nerveux : réduction du cortisol (hormone du stress), amélioration de la qualité du sommeil, relaxation musculaire profonde. Une session de 20-30 minutes suivie d'une douche fraîche puis d'un moment calme constitue un rituel bien-être complet.
+
+L'[O SPA ZEN](/logements/o-spa-zen) propose exactement cette combinaison : jacuzzi + sauna finlandais + terrasse pergola. C'est notre logement le plus complet en matière de bien-être.
+
+## Comment préparer son séjour bien-être
+
+### La veille
+- Évitez l'alcool et dormez suffisamment
+- Préparez votre playlist ou votre sélection de podcasts
+- Prévoyez des vêtements confortables (peignoirs si possible)
+
+### À l'arrivée
+- Montez la température du jacuzzi à votre préférence avant d'y entrer (en général 37–38°C)
+- Allumez des bougies si vous en avez
+- Désactivez les notifications de votre téléphone
+
+### Le programme idéal
+- **Après-midi** : arrivée, installation, première session jacuzzi (20 min)
+- **Soir** : dîner en livraison ou préparé ensemble, sauna si disponible
+- **Matin** : petit-déjeuner tardif, seconde session jacuzzi, départ apaisé
+
+## Massages en duo : où en trouver en IDF
+
+Plusieurs prestataires proposent des massages à domicile — directement dans votre logement. C'est une option à réserver à l'avance (48-72h minimum) qui complète parfaitement un séjour bien-être.
+
+Quelques pistes : **Zeel**, **Soothe** (disponible en France), ou les thérapeutes indépendants via **Treatwell**. N'hésitez pas à nous demander nos recommandations locales lors de votre réservation.
+
+## Les soins à faire soi-même
+
+Pas besoin d'un prestataire externe pour prendre soin de soi. Quelques essentiels à emporter :
+
+- Masques visage (à appliquer pendant le jacuzzi)
+- Huiles de massage (karité, argan, lavande)
+- Sels de bain ou bombes effervescentes
+- Tisanes adaptogènes (ashwagandha, camomille, valériane)
+
+## Quel logement Wonderroomz pour un séjour bien-être ?
+
+<div style={{overflowX:"auto",marginBottom:"1.5rem"}}>
+  <table style={{width:"100%",borderCollapse:"collapse",fontSize:"0.9375rem"}}>
+    <thead>
+      <tr style={{borderBottom:"2px solid rgba(184,153,122,0.3)"}}>
+        <th style={{textAlign:"left",padding:"0.75rem 1rem",color:"#1C1C1C",fontWeight:600}}>Logement</th>
+        <th style={{textAlign:"center",padding:"0.75rem 1rem",color:"#1C1C1C",fontWeight:600}}>Jacuzzi</th>
+        <th style={{textAlign:"center",padding:"0.75rem 1rem",color:"#1C1C1C",fontWeight:600}}>Sauna</th>
+        <th style={{textAlign:"center",padding:"0.75rem 1rem",color:"#1C1C1C",fontWeight:600}}>Terrasse</th>
+        <th style={{textAlign:"left",padding:"0.75rem 1rem",color:"#1C1C1C",fontWeight:600}}>Ambiance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {nom:"O SPA ZEN",jacuzzi:true,sauna:true,terrasse:"✓ pergola",ambiance:"Cocooning zen"},
+        {nom:"Cabanette",jacuzzi:true,sauna:true,terrasse:false,ambiance:"Chalet raffiné"},
+        {nom:"Penthouse",jacuzzi:true,sauna:false,terrasse:false,ambiance:"Élégance urbaine"},
+        {nom:"Jungle Fever",jacuzzi:false,sauna:false,terrasse:false,ambiance:"Cinéma & détente"},
+      ].map((row,i) => (
+        <tr key={row.nom} style={{borderBottom:"1px solid rgba(28,28,28,0.06)",backgroundColor:i%2===0?"rgba(28,28,28,0.02)":"transparent"}}>
+          <td style={{padding:"0.75rem 1rem",fontWeight:600,color:"#1C1C1C"}}>{row.nom}</td>
+          <td style={{padding:"0.75rem 1rem",textAlign:"center",color:row.jacuzzi?"#7A9E7E":"rgba(28,28,28,0.3)",fontSize:"1.1rem"}}>{row.jacuzzi?"✓":"—"}</td>
+          <td style={{padding:"0.75rem 1rem",textAlign:"center",color:row.sauna?"#7A9E7E":"rgba(28,28,28,0.3)",fontSize:"1.1rem"}}>{row.sauna?"✓":"—"}</td>
+          <td style={{padding:"0.75rem 1rem",textAlign:"center",color:row.terrasse?"#7A9E7E":"rgba(28,28,28,0.3)",fontSize:row.terrasse&&row.terrasse!==false?"0.85rem":"1.1rem"}}>{row.terrasse||"—"}</td>
+          <td style={{padding:"0.75rem 1rem",color:"rgba(28,28,28,0.65)"}}>{row.ambiance}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+Pour un séjour 100 % bien-être, l'[O SPA ZEN](/logements/o-spa-zen) est notre recommandation première. La Cabanette est une excellente alternative si vous cherchez une ambiance plus intimiste et boisée.
+
+[Voir nos logements bien-être →](/logements)
